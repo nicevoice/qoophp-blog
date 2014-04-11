@@ -11,7 +11,7 @@ class ControllerBase extends Controller
         $controller = $dispatcher->getControllerName();
         $action = $dispatcher->getActionName();
 
-        if ($controller == 'login' && $module == 'backend' && $action == 'index') {
+        if ($controller == 'login' && $action == 'index') {
             return;
         }
 
