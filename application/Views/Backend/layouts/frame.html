@@ -1,0 +1,64 @@
+<!doctype html>
+<html lang="zh-cn">
+<head>
+    <meta charset="UTF-8">
+    <title>TItle</title>
+    {{ javascript_include("../assets/jquery-2.1.0.min.js") }}
+    {{ javascript_include("../assets/backend/js/main.js") }}
+    {{ stylesheet_link("../assets/backend/css/reset.css") }}
+    {{ stylesheet_link("../assets/backend/css/frame.css") }}
+</head>
+<body  onselectstart="return false">
+<!--header-->
+<header id="header">
+    <a id="logo" href="javascript:void(0);">QooPHP</a>
+    <ul class="nav">
+        <!--<li><a href="" class="active">CAT</a></li>-->
+        <!--<li><a href="">CAT</a></li>-->
+    </ul>
+
+    <ul id="nav_tool_bar">
+        <li>
+            <a id="logout" href="{{ url.get('login/logout') }}">LogOut</a>
+        </li>
+    </ul>
+</header>
+
+<!--navbar-->
+<header id="nav">
+
+</header>
+<!--nav-->
+<nav id="left">
+    <ul>
+        <li><a href="{{ url.get('index/welcome') }}">首页</a></li>
+        <li><a href="{{ url.get('article/index') }}">文章列表</a></li>
+        <li><a href="{{ url.get('article/create') }}">写文章</a></li>
+        <li><a href="{{ url.get('category/create') }}">创建分类</a></li>
+        <li><a href="{{ url.get('category') }}">分类列表</a></li>
+        <li><a href="{{ url.get('setting') }}">系统设置</a></li>
+        <li><a href="{{ url.get('setting/user') }}">账户设置</a></li>
+    </ul>
+</nav>
+<!--content-->
+<article id="main">
+    {{ content() }}
+</article>
+
+<script>
+    $(function(){
+        //左侧导航点击响应
+        $("nav#left").on('click', 'a', function(){
+            $("article#main iframe").prop("src", $(this).prop('href'));
+            $(this).parents('ul').find('a').removeClass('active');
+            $(this).addClass('active');
+            return false;
+        });
+//    iframe加载绑定事件
+//    $("article#main iframe").load(function(){
+//        $("#main").removeClass('loading');
+//    })
+    });
+</script>
+</body>
+</html>

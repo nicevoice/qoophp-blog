@@ -1,0 +1,46 @@
+{% for item in items %}
+<div class="row">
+    <div class="col-md-12">
+        <div class="widget-container widget-list fluid-height">
+            <div class="widget-content padded">
+                <h2>
+                    <a href="{{ url.get('archives') }}/{{ item.id }}">{{ item.name }}</a>
+                </h2>
+
+                <div class="article_content">
+                    {{ item.description }}
+                </div>
+
+                <div class="article_tag" style="margin-top: 20px;">
+                    <ul class="list-unstyled list-inline">
+                        <li>
+                            <i class="icon-comments-alt"></i>
+                            <a href="{{ url.get(['for':'category-page', 'page':0,'slug':item.category_alias.slug]) }}">
+                                {#{ item.category_alias.name }#}
+                            </a>
+                        </li>
+                        <li>
+                            <i class="icon-eye-open"></i>
+                            {% if item.view_count ==0 %}
+                                还没人来踩
+                            {% else %}
+                                {{item.view_count}}位小伙伴看过
+                            {% endif %}
+                        </li>
+                        <li>
+                            <i class="icon-tags"></i>
+                            {{ item.getArticleStringTags() }}
+                        </li>
+                        {% if auth.getId() > 0 %}
+                        <li>
+                            <i class="icon-edit"></i>
+                            <a target="_blank" href="{{ url.get('admin/article/edit') }}/{{item.id}}">Edit</a>
+                        </li>
+                        {% endif %}
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+{% endfor %}

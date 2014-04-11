@@ -1,0 +1,39 @@
+{% for item in pages.items %}
+<div class="row">
+    <div class="col-md-12">
+        <div class="widget-container widget-list fluid-height">
+            <div class="widget-content padded">
+                {% if auth.getId() > 0 %}
+                <a class="btn btn-danger btn-xs pull-right btn-delete"href="javascript:void(0);" data-id="{{item.id}}">Delete</a>
+                {% endif %}
+                <h2>
+                    <a href="{{ item.link }}" target="_blank" rel="nofollow">{{ item.name }}</a>
+                </h2>
+                <div class="article_content">
+                    {{ item.memo }}
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+{% endfor %}
+<div class="row">
+    <div class="col-md-12">
+        {{ page.get(pages, ['for':'bookmark-page'], ['wrapper':'col-md-12
+        clearfix','container':'pull-right','list':'pagination']) }}
+    </div>
+</div>
+
+<script>$(function(){
+    $(".btn-delete").click(function(){
+        $url = '{{url.get("bookmark/delete")}}?id='+$(this).data('id');
+        var $this = $(this);
+        $.get($url,function(data){
+            if(data.status){
+                $this.parents(".row").fadeOut('slow', function(){
+                    $this.parents(".row").remove();
+                });
+            }
+        });
+    });
+});</script>

@@ -1,0 +1,32 @@
+<legend>账户设置</legend>
+
+<form action="{{ url.get('setting/user') }}" method="post" class="form-horizontal">
+    <div class="form-group">
+        {{flash.output()}}
+        <label class="control-label col-md-2">昵称</label>
+        <div class="col-md-7">
+            {{ form.render('nickname') }}
+        </div>
+    </div>
+
+    <div class="form-group">
+        <label class="control-label col-md-2">新密码</label>
+        <div class="col-md-7">
+            {{ form.render('password') }}
+        </div>
+    </div>
+
+    <div class="form-group">
+        <label class="control-label col-md-2">重复密码</label>
+        <div class="col-md-7">
+            {{ form.render('repassword') }}
+        </div>
+    </div>
+
+    <div class="form-group">
+        <label class="control-label col-md-2"></label>
+        <div class="col-md-7">
+            <input type="submit" class="btn btn-default btn-primary" data-url="{{ url.get('setting/user') }}" value="提交保存">
+        </div>
+    </div>
+</form>

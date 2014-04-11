@@ -1,0 +1,4 @@
+.idea
+/cache/*.php
+public/uploads/*
+!public/.gitempty

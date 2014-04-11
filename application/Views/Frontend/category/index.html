@@ -1,0 +1,12 @@
+<div class="col-md-12">
+    <div class="widget-container widget-list fluid-height">
+        <div class="widget-content padded">
+            {% for item in items %}
+                <a class="btn btn-link btn-lg" href="{{ url.get(['for':'category-page','page':1,'slug':item.slug]) }}">
+                    {{ item.name }}
+                </a>
+            {% endfor %}
+
+        </div>
+    </div>
+</div>

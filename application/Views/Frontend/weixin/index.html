@@ -1,0 +1,14 @@
+{% for item in items %}
+<li>
+    <div class="timeline-time">
+        <strong>{{ date("Y-m-d", item.create_date) }}</strong>
+        {{ date("H:i", item.create_date) }}
+    </div>
+    <div class="timeline-icon">
+        <div class="bg-warning">&nbsp</div>
+    </div>
+    <div class="timeline-content">
+        <p>{{ item.content|e|nl2br }}</p>
+    </div>
+</li>
+{% endfor %}

@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="zh-cn">
+<head>
+    <meta charset="utf-8">
+    <meta content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" name="viewport">
+    {{ javascript_include("../assets/jquery-2.1.0.min.js") }}
+    {{ javascript_include("../assets/bootstrap/js/bootstrap.min.js") }}
+    {{ stylesheet_link("../assets/bootstrap/css/bootstrap.min.css") }}
+    {{ stylesheet_link("../assets/backend/css/style.css") }}
+
+    {{ stylesheet_link('../assets/simditor/externals/font-awesome/css/font-awesome.css') }}
+    {{ stylesheet_link('../assets/simditor/styles/simditor.css') }}
+
+    {{ javascript_include('../assets/simditor/lib/module.js') }}
+    {{ javascript_include('../assets/simditor/lib/uploader.js') }}
+    {{ javascript_include('../assets/simditor/lib/simditor.js') }}
+
+    {{ javascript_include('../assets/switchery/switchery.js') }}
+    {{ stylesheet_link('../assets/switchery/switchery.min.css') }}
+</head>
+<body style="padding: 10px 0;">
+<div class="container-fluid">
+    <div class="row-fluid">
+        <div class="col-md-12">
+            {{content()}}
+        </div>
+    </div>
+</div>
+</div>
+</body>
+</html>

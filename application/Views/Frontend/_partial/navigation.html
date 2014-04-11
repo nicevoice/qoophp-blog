@@ -1,0 +1,59 @@
+<!-- Navigation -->
+<div class="navbar navbar-fixed-top scroll-hide">
+    <div class="container-fluid top-bar">
+        <button class="navbar-toggle">
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+        </button>
+        <a class="logo" href="{{ url.get('') }}">QooPHP</a>
+
+        <form class="navbar-form form-inline col-lg-2 hidden-xs" method="get" action="{{url.get('search')}}">
+            <input class="form-control" name="q" value="{{request.get('q')}}" placeholder="搜索" type="text">
+        </form>
+    </div>
+    <div class="container-fluid main-nav clearfix">
+        <div class="nav-collapse">
+            <ul class="nav">
+                <li>
+                    <a class="current" href="{{ url.get('') }}"><span aria-hidden="true" class="se7en-home"></span>首页</a>
+                </li>
+                <li class="dropdown">
+                    <a data-toggle="dropdown" href="#">
+                        <span class="se7en-forms"></span>文章分类
+                    </a>
+                    {{ widget.get("Category") }}
+
+                </li>
+                <li>
+                    <a href="{{ url.get('weixin') }}"><span class="se7en-pages"></span>微点滴</a>
+                </li>
+                <li>
+                    <a href="{{ url.get('bookmark') }}"><span class="se7en-forms"></span>我的书签</a>
+                </li>
+                <li class="dropdown">
+                    <a data-toggle="dropdown" href="#">
+                    <span aria-hidden="true" class="se7en-star"></span>更多
+                    </a>
+                    <ul class="dropdown-menu">
+                        <li class="dropdown">
+                            <a href="{{ url.get('tag') }}">标签墙</a>
+                        </li>
+                        <li class="dropdown">
+                            <a href="http://qoofan.taobao.com" target="_blank">淘宝店</a>
+                        </li>
+                        <li class="dropdown">
+                            <a href="{{ url.get('coupon') }}">优惠码</a>
+                        </li>
+
+                        <li class="dropdown">
+                            <a href="{{ url.get('about') }}">关于我</a>
+                        </li>
+                    </ul>
+                </li>
+            </ul>
+
+        </div>
+    </div>
+</div>
+<!-- End Navigation -->

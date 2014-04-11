@@ -1,0 +1,134 @@
+<legend>网站设置</legend>
+
+<form action="" class="form-horizontal">
+    <div class="form-group">
+        <label class="control-label col-md-2">网站名称</label>
+        <div class="col-md-7">
+            <input class="form-control" name="setting[site_name]" type="text" value="{{setting['site_name']}}">
+        </div>
+    </div>
+
+    <div class="form-group">
+        <label class="control-label col-md-2">口号设置</label>
+        <div class="col-md-7">
+            <input class="form-control" name="setting[site_slogan]" type="text" value="{{setting['site_slogan']}}">
+        </div>
+    </div>
+
+    <div class="form-group">
+        <label class="control-label col-md-2">首页地址</label>
+        <div class="col-md-7">
+            <input class="form-control" name="setting[site_url]" type="text" value="{{setting['site_url']}}">
+        </div>
+    </div>
+
+    <div class="form-group">
+        <label class="control-label col-md-2">网站关键字</label>
+        <div class="col-md-7">
+            <input class="form-control" name="setting[keywords]" type="text" value="{{setting['keywords']}}">
+        </div>
+    </div>
+
+    <div class="form-group">
+        <label class="control-label col-md-2">网站描述</label>
+        <div class="col-md-7">
+            <textarea class="form-control" name="setting[description]">{{setting['description']}}</textarea>
+        </div>
+    </div>
+
+    <div class="form-group">
+        <label class="control-label col-md-2">允许图片类型</label>
+        <div class="col-md-7">
+            <textarea class="form-control" name="setting[ext_image]">{{setting['ext_image']}}</textarea>
+        </div>
+    </div>
+
+    <div class="form-group">
+        <label class="control-label col-md-2">允许文件类型</label>
+        <div class="col-md-7">
+            <textarea class="form-control" name="setting[ext_file]">{{setting['ext_file']}}</textarea>
+        </div>
+    </div>
+
+    <div class="form-group">
+        <label class="control-label col-md-2">允许媒体类型</label>
+        <div class="col-md-7">
+            <textarea class="form-control" name="setting[ext_media]">{{setting['ext_media']}}</textarea>
+        </div>
+    </div>
+
+    <div class="form-group">
+        <label class="control-label col-md-2">允许Flash类型</label>
+        <div class="col-md-7">
+            <textarea class="form-control" name="setting[ext_flash]">{{setting['ext_flash']}}</textarea>
+        </div>
+    </div>
+
+    <div class="form-group">
+        <label class="control-label col-md-2">上传文件大小限制(kb)</label>
+        <div class="col-md-7">
+            <textarea class="form-control" name="setting[max_file_size]">{{setting['max_file_size']}}</textarea>
+        </div>
+    </div>
+
+
+    <div class="form-group">
+        <label class="control-label col-md-2">网站备案号</label>
+        <div class="col-md-7">
+            <input class="form-control" name="setting[site_number]" type="text" value="{{setting['site_number']}}">
+        </div>
+    </div>
+
+    <div class="form-group">
+        <label class="control-label col-md-2">网站开启状态</label>
+        <div class="col-md-7 clearfix">
+            <input type="hidden" name="setting[is_open]" value="off" />
+            {% if setting['is_open'] == 'off' %}
+            <input type="checkbox" name="setting[is_open]" class="js-switch"  />
+            {% else %}
+            <input type="checkbox" name="setting[is_open]" class="js-switch" checked />
+            {% endif %}
+        </div>
+    </div>
+
+    <div class="form-group">
+        <label class="control-label col-md-2">网站关闭提示</label>
+        <div class="col-md-7">
+            <input class="form-control" name="setting[close_info]" type="text" value="{{setting['close_info']}}">
+        </div>
+    </div>
+
+    <div class="form-group">
+        <label class="control-label col-md-2">统计代码</label>
+        <div class="col-md-7">
+            <textarea class="form-control" name="setting[statitics]">{{setting['statitics']}}</textarea>
+        </div>
+    </div>
+
+    <div class="form-group">
+        <label class="control-label col-md-2"></label>
+        <div class="col-md-7">
+            <input type="submit" class="btn btn-default btn-primary" data-url="{{ url.get('setting/save') }}" value="提交保存">
+        </div>
+    </div>
+
+</form>
+
+<script>
+    $(function(){
+        $('input[type=submit]').click(function(){
+            var _data = $(this).parents('form').serialize();
+            var _url = $(this).data('url');
+
+            $.post(_url, _data, function(data){
+                alert(data.msg);
+            });
+            return false;
+        });
+
+        (function(){
+            var elem = document.querySelector('.js-switch');
+            var init = new Switchery(elem);
+        })();
+    });
+</script>

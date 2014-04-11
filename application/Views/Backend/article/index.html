@@ -1,0 +1,50 @@
+<legend>文章管理</legend>
+    {{flash.output()}}
+<table class="table table-striped table-bordered table-hover">
+    <thead>
+    <th>id</th>
+    <th>Title</th>
+    <th>Category</th>
+    <th>View</th>
+    <th>CreateAt</th>
+    <th>Tag</th>
+    <th>Edit</th>
+    <th>Del</th>
+    </thead>
+    <tbody>
+    {% for item in pages.items %}
+    <tr>
+        <td>{{ item.id }}</td>
+        <td>{{ item.name }}</td>
+        <td>{{ item.category_alias.name }}</td>
+        <td>{{ item.view_count }}</td>
+        <td>{{ date("Y-m-d H:i:s", item.create_date) }}</td>
+        <td>{{ item.getArticleStringRawTags() }}</td>
+        <td>
+            <a class="btn btn-xs btn-primary btn-block" href="{{url.get('article/edit')}}/{{item.id}}">
+                <i class="icon-edit"></i> Edit
+            </a>
+        </td>
+        <td>
+            {% if item.status == 1 %}
+            <!--delete-->
+            <a class="btn btn-xs  btn-danger btn-block" href="{{url.get('article/delete')}}/{{item.id}}">
+                <i class="icon-trash"></i>
+                Delete
+            </a>
+            {% else %}
+            <!--revert-->
+            <a class="btn btn-xs btn-warning btn-block" href="{{url.get('article/revert')}}/{{item.id}}">
+                <i class="icon-share-sign"></i>
+                Revert
+            </a>
+            {% endif %}
+        </td>
+
+    </tr>
+    {% endfor %}
+
+    </tbody>
+</table>
+
+{{ page.get(pages, ['article/index'], ['list':'pagination pull-right']) }}

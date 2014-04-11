@@ -1,0 +1,7 @@
+<ul class="dropdown-menu category-list">
+    {% for item in items %}
+    <li class="dropdown">
+        <a href="{{ url.get(['for':'category-page','page':1,'slug':item.slug]) }}">{{item.name}}</a>
+    </li>
+    {% endfor %}
+</ul>

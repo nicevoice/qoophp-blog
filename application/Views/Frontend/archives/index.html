@@ -1,0 +1,56 @@
+<div class="row">
+    <div class="col-md-12">
+        <div class="widget-container fluid-height">
+            <div class="widget-content padded">
+                <h1 style="border-bottom: 1px solid #ccc;padding-bottom: 20px;">{{ data.name }}</h1>
+
+                <div class="article_content">
+                    {{ data.content }}
+                </div>
+                <div class="article_tag" style="margin-top: 20px;">
+                    <ul class="list-unstyled list-inline">
+                        <li>
+                            <i class="icon-comments-alt"></i>
+                            <a href="{{ url.get(['for':'category-page', 'page':0,'slug':item.category_alias.slug]) }}">
+                                {{ data.category_alias.name }}
+                            </a>
+                        </li>
+                        <li>
+                            <i class="icon-eye-open"></i>
+                            {% if data.view_count ==0 %}
+                            还没人来踩
+                            {% else %}
+                            {{data.view_count}}位小伙伴看过
+                            {% endif %}
+                        </li>
+                        <li>
+                            <i class="icon-tags"></i>
+                            {{ data.getArticleStringTags() }}
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="row">
+    <div class="col-md-12">
+        <div class="widget-container fluid-height">
+            <div class="widget-content padded">
+                <!--googlead-->
+                <script async src="//pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+
+                <!-- QooPHP_Article -->
+                <ins class="adsbygoogle"
+                     style="display:block"
+                     data-ad-client="ca-pub-6213686553141996"
+                     data-ad-slot="4137148655"
+                     data-ad-format="auto"></ins>
+                <script>
+                    (adsbygoogle = window.adsbygoogle || []).push({});
+                </script>
+            </div>
+        </div>
+    </div>
+</div>

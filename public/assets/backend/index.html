@@ -1,0 +1,67 @@
+<!doctype html>
+<html lang="zh-cn">
+<head>
+    <meta charset="UTF-8">
+    <title>TItle</title>
+    <script src="js/jquery-2.1.0.min.js"></script>
+    <script src="js/main.js"></script>
+    <link rel="stylesheet" href="css/reset.css"/>
+    <link rel="stylesheet" href="css/frame.css"/>
+    <!--ios overlay-->
+    <link rel="stylesheet" href=" libs/iosOverlay/css/iosOverlay.css">
+    <script src="libs/iosOverlay/js/iosOverlay.js"></script>
+</head>
+<body>
+<!--header-->
+<header id="header">
+    <a id="logo" href="javascript:void(0);">LOGO</a>
+    <ul class="nav">
+        <li><a href="" class="active">CAT</a></li>
+        <li><a href="">CAT</a></li>
+        <li><a href="">CAT</a></li>
+        <li><a href="">CAT</a></li>
+    </ul>
+</header>
+
+<!--navbar-->
+<header id="nav">
+
+</header>
+<!--nav-->
+<nav id="left">
+    <ul>
+        <li><a href="http://baidu.com">BAIDU</a></li>
+        <li><a href="http://image.baidu.com">BAIDU</a></li>
+        <li><a href="http://news.baidu.com">BAIDU</a></li>
+    </ul>
+</nav>
+<!--content-->
+<article id="main">
+    <iframe src="http://www.baidu.com" frameborder="0" scrolling="auto" width="100%" height="100%"></iframe>
+</article>
+
+<script>
+    $(function(){
+        //左侧导航点击响应
+        $("nav#left").on('click', 'a', function(){
+            $("article#main iframe").prop("src", $(this).prop('href'));
+            $(this).parents('ul').find('a').removeClass('active');
+            $(this).addClass('active');
+            return false;
+        });
+        //头部导航点击后加载左侧列表
+        $("header#header ul a").click(function(){
+            var _url = $(this).prop('href');
+            $.get(_url, function(data){
+                $("nav#left").html(data);
+            });
+            return false;
+        });
+//    iframe加载绑定事件
+//    $("article#main iframe").load(function(){
+//        $("#main").removeClass('loading');
+//    })
+    });
+</script>
+</body>
+</html>

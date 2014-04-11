@@ -1,0 +1,30 @@
+.widget-list .widget-content {
+    border-bottom: 1px solid #CCCCCC;
+}
+
+.widget-container .widget-action{
+    padding:5px 0;
+}
+/*prettify*/
+.article_content blockquote, .article_content pre, .article_content pre.prettyprint {
+    margin      : 10px 0;
+    padding     : 8px 10px 8px 12px;
+    border      : 1px solid #DDDDDD;
+    background  : #F1F1F1;
+    border-left : 5px solid #6CE26C;
+    border-radius: 0px;
+    line-height: 1.1em;
+    font-family: "courier";
+}
+
+.widget-content h2 {
+    border-left: 2px solid #cccccc;
+    margin-bottom: 20px;
+    padding-left: 10px;
+}
+.widget-content{
+    text-shadow: 1px 0px 1px rgba(170,170,170,.8);
+}
+.search_result em{
+    color: orangered;
+}
