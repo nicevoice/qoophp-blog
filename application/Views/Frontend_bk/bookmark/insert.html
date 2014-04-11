@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>添加书签</title>
+</head>
+<body>
+<form action="{{ url.get('bookmark/insert') }}" method="post">
+    <table width="100%">
+        <tr>
+            <td width="60px">Title</td>
+            <td><input style="width: 400px;" type="text" name="name" value="{{ request.get('title') }}"/></td>
+        </tr>
+        <tr>
+            <td>Url</td>
+            <td><input style="width: 400px;" type="text" name="link" value="{{ request.get('url') }}"/></td>
+        </tr>
+        <tr>
+            <td>Category</td>
+            <td>{{ select("category_id", catInfo, 'using': ['id', 'name']) }}</td>
+        </tr>
+        <tr>
+            <td>Memo</td>
+            <td><textarea style="width: 400px;" name="memo" rows="3"></textarea></td>
+        </tr>
+        <tr>
+            <td>&nbsp;</td>
+            <td><input type="submit" value="Submit"/></td>
+        </tr>
+    </table>
+</form>
+</body>
+</html>

@@ -1,0 +1,11 @@
+<div class="widget-container">
+    <div class="widget-content padded">
+        <h2>Tag列表</h2>
+
+        {% for item in tag%}
+        <a class="btn btn-link" href="{{url.get(['tag':item.name, 'for':'tag-page'])}}" title="{{item.name}}">
+            {{ item.name }}[{{ item.hot}}]
+        </a>
+        {% endfor %}
+    </div>
+</div>

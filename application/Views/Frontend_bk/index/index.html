@@ -1,0 +1,7 @@
+{{ partial("_partial/article_list",['items':pages.items]) }}
+
+<div class="row">
+    <div class="col-md-12">
+        {{ page.get(pages, ['for':'index-page'], ['list':'pagination pull-right']) }}
+    </div>
+</div>

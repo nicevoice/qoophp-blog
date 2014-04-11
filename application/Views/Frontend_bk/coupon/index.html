@@ -1,0 +1,90 @@
+    <div class="main-left" style="width: 700px;">
+        <div class="widget-container">
+            <div class="widget-content padded">
+                <h2>经被小伙伴用过的优惠券</h2>
+                <table class="table">
+                    <tbody>
+                    {% for item in coupons %}
+                    <tr>
+                        <td>{{ item.serial }}</td>
+                        <td>{{ item.discount }}</td>
+                    </tr>
+                    {% endfor %}
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+
+
+
+    <div class="main-right" style="width: 480px">
+        <div class="widget-container widget-list fluid-height">
+            <div class="widget-content padded">
+                <h2>抽取优惠券</h2>
+                <form class="form-horizontal">
+                    <div class="form-group">
+                        <div class="col-md-8">
+                            <input type="text" class="input" id="id" value="" placeholder="请输入抵用券查询"/>
+                        </div>
+                        <div class="col-md-4">
+                            <a class="btn" id="check" href="javascript:void(0);">查询</a>
+                            {% if auth.getId()>0 %}
+                            <a class="btn" id="remove" href="javascript:void(0);">Del</a>
+                            {% endif %}
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        <div class="col-md-12">
+                            <a class="btn btn-block btn-lg btn-primary" id="get" href="javascript:void(0);">
+                                阿里巴巴，芝麻开门！
+                            </a>
+                        </div>
+                    </div>
+
+                    <div class="form-group" id="result-container" style="display: none;">
+                        <div class="col-md-12">
+                            <blockquote id="result" style="font-size: 14px;line-height: 2.0;"></blockquote>
+                        </div>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+<script>
+    $(function () {
+        $("#check").click(function () {
+            var _code = $("#id").val();
+
+            var $this = $(this);
+            $.post("{{url.get('coupon/check')}}", {id: _code}, function (data) {
+                $("#result").html(data.msg);
+                $("#result-container").slideDown('slow');
+            });
+            return false;
+        });
+        {% if auth.getId() > 0 %}
+            $("#remove").click(function () {
+                var _code = $("#id").val();
+
+                var $this = $(this);
+                $.post("{{url.get('coupon/remove')}}", {id: _code}, function (data) {
+                    $("#result").html(data.msg);
+                });
+                return false;
+            });
+            {% endif %}
+
+
+            $("#get").click(function () {
+                $.post("{{url.get('coupon/get')}}", function (data) {
+                    $("#result").html(data.msg);
+                    $("#result-container").slideDown('slow');
+                });
+                return false;
+            });
+        }
+        )
+        ;
+</script>
