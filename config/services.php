@@ -12,5 +12,6 @@ $di->set('router', getFunc('router'));
 $di->set('setting', getFunc('setting'));
 $di->set('page', getFunc('page'));
 $di->set('auth', getFunc('auth'));
+$di->set('weixin', getFunc('weixin'));
 $di->set('widget', getFunc('widget'));
 $di->set('widget_view', getFunc('widget_view'));
