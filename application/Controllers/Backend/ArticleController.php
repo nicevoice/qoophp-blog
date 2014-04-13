@@ -45,7 +45,6 @@ class ArticleController extends BackendControllerBase
 
             ArticleTag::saveTag($model->id, $tag);
             Category::inc($model->category_id);
-            $model->addSearch();
             $this->flash->success('保存成功！');
             $this->redirect('article/edit/'.$model->id);
         }
@@ -83,7 +82,6 @@ class ArticleController extends BackendControllerBase
                 Category::dec($old_category);
             }
             $this->flash->success('保存成功！');
-            $model->updateSearch();
             $this->redirect('article/edit/'.$model->id);
         }
         $model->tag = $model->getArticleStringRawTags();

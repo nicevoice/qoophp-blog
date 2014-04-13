@@ -132,45 +132,6 @@ class Article extends ModelCommon
         return implode(',', $tag);
     }
 
-    public function addSearch()
-    {
-        $cmd = "ADD";
-        $data_org = $this->_getSearchBaseInfo();
-        $data[] = array('fields'=>$data_org, 'cmd'=>$cmd);
-        $app_name = $this->_di('config')->search->app_name;
-        $app = new CloudsearchDoc($app_name, $this->_di('search'));
-        $ret = $app->add($data, 'main');
-        return $ret;
-    }
-
-    public function updateSearch()
-    {
-        $app_name = $this->_di('config')->search->app_name;
-        $cmd = "UPDATE";
-        $data_org = $this->_getSearchBaseInfo();
-        $data[] = array('fields'=>$data_org, 'cmd'=>$cmd);
-        $app = new CloudsearchDoc($app_name, $this->_di('search'));
-        $ret = $app->update($data, 'main');
-        return $ret;
-    }
-
-    private function _getSearchBaseInfo(){
-        $data_fields = array(
-            'id' => $this->id,
-            'url' => $this->_di('setting')->get('site_url').'/archives/'.$this->id,
-            'author' => 'Rogee',
-            'source' => 'QooPHP',
-            'title' => $this->name,
-            'display_text' => $this->description,
-            'body' => $this->content,
-            'cat_id' => intval($this->category_id),
-            'hit_num'=> intval($this->view_count),
-            'update_timestamp' => $this->update_date,
-            'create_timestamp' => $this->create_date,
-        );
-        return $data_fields;
-    }
-
     public function getArticleStringRawTags()
     {
         $tags = $this->article_tag_alias;
