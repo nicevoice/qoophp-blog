@@ -1,5 +1,5 @@
 <?php
 $function = function () {
-    return new \Library\Weixin\WeiXinBase();
+    return new \Library\WeiXin\WeiXinBase();
 };
 return $function;
