@@ -171,7 +171,10 @@ class Article extends ModelCommon
      */
     public static function getSearchResult($in_array)
     {
-        $criteria = array('conditions' => "id in (".implode(',', $in_array).")");
+        $criteria = array(
+            'conditions' => sprintf("id in (%s)", implode(',', $in_array)),
+            'order' => 'create_date, view_count desc'
+        );
         return Article::find($criteria);
     }
 } 
