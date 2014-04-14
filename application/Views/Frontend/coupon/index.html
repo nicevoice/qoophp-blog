@@ -4,7 +4,7 @@
         <div class="widget-container widget-list fluid-height">
             <div class="widget-content padded">
                 <div class="heading">
-                    <i class="icon-table"></i>经被小伙伴用过的优惠券
+                    <i class="icon-table"></i>已经被小伙伴用过的优惠券
                 </div>
                 <div class="table-responsive">
                     <table class="table">
@@ -13,6 +13,7 @@
                         <tr>
                             <td>{{ item.serial }}</td>
                             <td>{{ item.discount }}</td>
+                            <td>{{ date("Y-m-d H:i:s", item.update_date) }}</td>
                         </tr>
                         {% endfor %}
                         </tbody>

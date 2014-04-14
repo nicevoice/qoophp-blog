@@ -30,7 +30,8 @@ class Coupon extends ModelCommon
     {
         $criteria = array(
             'conditions' => 'remove = 1',
-            'order' => 'create_date desc'
+            'limit' => 15,
+            'order' => 'update_date desc'
         );
         $model = self::find($criteria);
         return $model;
