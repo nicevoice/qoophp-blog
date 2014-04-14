@@ -173,7 +173,7 @@ class Article extends ModelCommon
     {
         $criteria = array(
             'conditions' => sprintf("id in (%s)", implode(',', $in_array)),
-            'order' => 'create_date, view_count desc'
+            'order' => 'id desc'
         );
         return Article::find($criteria);
     }
